@@ -1,17 +1,89 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Financeiro Fácil
     </ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+      <ion-grid>
+        <ion-row>
+            <ion-col>
+              <center><ion-icon name="chevron-back-outline"></ion-icon></center>
+            </ion-col>
+
+            <ion-col>
+              <center><ion-title>Outubro/2020</ion-title></center>
+            </ion-col>
+
+            <ion-col>
+              <center><ion-icon name="chevron-forward-outline"></ion-icon></center>
+            </ion-col>
+        </ion-row>
+      </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-text><center><h2>Saldo Mês</h2></center></ion-text>
+      <ion-text><center><h4>R$ {{saldoMes}}</h4></center></ion-text>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-card color="success" (click)="chamarRecebidos()">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h2>Recebidos</h2>
+          </ion-col>
+
+          <ion-col>
+            <h2>R$ {{valorRecebido}}</h2>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <h3>À receber</h3>
+          </ion-col>
+
+          <ion-col>
+            <h3>R$ {{valorReceber}}</h3>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-card-content>
+</ion-card>
+
+<ion-card color="danger" (click)="chamarDespesas()">
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h2>Despesas</h2>
+        </ion-col>
+
+        <ion-col>
+          <h2>R$ {{valorDespesa}}</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h3>À pagar</h3>
+        </ion-col>
+
+        <ion-col>
+          <h3>R$ {{valorPagar}}</h3>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+
+
 </ion-content>

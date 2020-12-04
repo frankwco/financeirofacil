@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>ADD</ion-title>
+    <ion-buttons slot="end">
+     <ion-button (click)="excluirLancamento()">
+       <ion-icon name="trash-outline" color="danger"></ion-icon>
+     </ion-button>
+     <ion-button (click)="salvarLancamento()">
+       <ion-icon name="save-outline" color="success"></ion-icon>
+     </ion-button>
+   </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+      <ion-item>
+        <ion-label position="floating">Descrição</ion-label>
+        <ion-input [(ngModel)]="lancamento.descricao"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Data</ion-label>
+        <ion-datetime [(ngModel)]="lancamento.dataLacamento" cancelText="Cancelar" doneText="Ok" max="2050-12-09" displayFormat="dd/MM/yyyy" placeholder="Selecione uma Data"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Valor</ion-label>
+        <ion-input [(ngModel)]="lancamento.valor"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label >Repetir o Lançamento</ion-label>
+        <ion-toggle [(ngModel)]="repetirLancamento" color="success"></ion-toggle>
+      </ion-item>
+      <ion-item *ngIf="repetirLancamento==1">
+        <ion-label position="floating">Quantidade de Vezes</ion-label>
+        <ion-input [(ngModel)]="lancamento.quantidadeVezes" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Recebido?</ion-label>
+        <ion-toggle [(ngModel)]="lancamento.situacao" color="success"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Categoria</ion-label>
+        <ion-select cancelText="Cancelar" interface="action-sheet" [(ngModel)]="lancamento.categoria">
+          <ion-select-option value="Salário">Salário</ion-select-option>
+          <ion-select-option value="Aluguel">Aluguel</ion-select-option>
+          <ion-select-option value="Vendas">Vendas</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+</ion-content>
