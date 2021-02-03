@@ -3,10 +3,39 @@
     <ion-buttons slot="start">
      <ion-back-button></ion-back-button>
    </ion-buttons>
-    <ion-title>despesas</ion-title>
+    <ion-title>Despesas</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="danger">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <center><ion-title>
+              <ion-datetime (ionChange)="selecionarMes()" monthNames="Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro" [(ngModel)]="mesAtual" cancelText="Cancelar" doneText="Ok" max="2050-12-09" displayFormat="MMMM/YYYY" placeholder="Selecione uma Data"></ion-datetime>
+            </ion-title></center>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-list>
+    <ion-item *ngFor="let lancamento of listaLancamentos" (click)="alterarLancamento(lancamento.key)">
+      <ion-label>
+        <h5>{{lancamento.descricao}}</h5>
+        <p>{{lancamento.categoria}} - {{lancamento.dataLacamento | date:"dd/MM/yyyy"}}</p>
+
+      </ion-label>
+      <p>{{lancamento.valor | currency:"BRL":true:"1.2-2" }}  <ion-icon *ngIf='lancamento.situacao==1' color="primary" name="checkmark-done-outline"></ion-icon> <ion-icon *ngIf="lancamento.situacao==0" color="danger" name="close-outline"></ion-icon></p>
+    </ion-item>
+  </ion-list>
+  <br/><br/><br/>
 </ion-content>
+<ion-footer>
+  <ion-fab vertical="bottom" horizontal="end" (click)="chamarFormulario()">
+     <ion-fab-button>
+       <ion-icon name="add"></ion-icon>
+     </ion-fab-button>
+   </ion-fab>
+</ion-footer>

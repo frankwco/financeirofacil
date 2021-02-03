@@ -1,22 +1,16 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="light">
     <ion-title>
       Financeiro Fácil
     </ion-title>
   </ion-toolbar>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="light">
       <ion-grid>
         <ion-row>
             <ion-col>
-              <center><ion-icon name="chevron-back-outline"></ion-icon></center>
-            </ion-col>
-
-            <ion-col>
-              <center><ion-title>Outubro/2020</ion-title></center>
-            </ion-col>
-
-            <ion-col>
-              <center><ion-icon name="chevron-forward-outline"></ion-icon></center>
+              <center><ion-title>
+                <ion-datetime (ionChange)="selecionarMes()" monthNames="Janeiro, Fevereiro, Março, Abril, Maio, Junho, Julho, Agosto, Setembro, Outubro, Novembro, Dezembro" [(ngModel)]="mesAtual" cancelText="Cancelar" doneText="Ok" max="2050-12-09" displayFormat="MMMM/YYYY" placeholder="Selecione uma Data"></ion-datetime>
+              </ion-title></center>
             </ion-col>
         </ion-row>
       </ion-grid>
@@ -25,13 +19,13 @@
 
 <ion-content [fullscreen]="true">
   <ion-header>
-    <ion-toolbar color="primary">
-      <ion-text><center><h2>Saldo Mês</h2></center></ion-text>
-      <ion-text><center><h4>R$ {{saldoMes}}</h4></center></ion-text>
+    <ion-toolbar color="light">
+      <ion-text><center><h2>Saldo do Mês</h2></center></ion-text>
+      <ion-text><center><h4>{{saldoMes}}</h4></center></ion-text>
     </ion-toolbar>
   </ion-header>
 
-  <ion-card color="success" (click)="chamarRecebidos()">
+  <ion-card  (click)="chamarRecebidos()" style="border-left: 8px solid #2dd36f">
     <ion-card-content>
       <ion-grid>
         <ion-row>
@@ -40,7 +34,7 @@
           </ion-col>
 
           <ion-col>
-            <h2>R$ {{valorRecebido}}</h2>
+            <h2> {{valorRecebido}}</h2>
           </ion-col>
         </ion-row>
 
@@ -50,7 +44,17 @@
           </ion-col>
 
           <ion-col>
-            <h3>R$ {{valorReceber}}</h3>
+            <h3> {{valorReceber}}</h3>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <h3>Total</h3>
+          </ion-col>
+
+          <ion-col>
+            <h3> {{valorTotalRecebido}}</h3>
           </ion-col>
         </ion-row>
 
@@ -58,7 +62,7 @@
     </ion-card-content>
 </ion-card>
 
-<ion-card color="danger" (click)="chamarDespesas()">
+<ion-card style="border-left: 8px solid #eb445a" (click)="chamarDespesas()">
   <ion-card-content>
     <ion-grid>
       <ion-row>
@@ -67,7 +71,7 @@
         </ion-col>
 
         <ion-col>
-          <h2>R$ {{valorDespesa}}</h2>
+          <h2> {{valorDespesa}}</h2>
         </ion-col>
       </ion-row>
 
@@ -77,7 +81,17 @@
         </ion-col>
 
         <ion-col>
-          <h3>R$ {{valorPagar}}</h3>
+          <h3>{{valorPagar}}</h3>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <h3>Total</h3>
+        </ion-col>
+
+        <ion-col>
+          <h3> {{valorTotalDespesa}}</h3>
         </ion-col>
       </ion-row>
 
